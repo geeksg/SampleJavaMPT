@@ -1,0 +1,50 @@
+package com.cg.helper;
+import java.util.ArrayList;
+import com.cg.bean.BookSchema;
+import java.util.Iterator;
+
+public class BookCollectionHelper 
+{
+	private static ArrayList<BookSchema>bookList=null;
+	static
+	{
+		bookList=new ArrayList<BookSchema>();
+		BookSchema b1=new BookSchema(154,"All about C",1200.00);
+		BookSchema b2=new BookSchema(254,"Learning java in 21 Days",900.00);
+		BookSchema b3=new BookSchema(589,"Interpretation of dreams",600.00);
+		// adding above book details into collection
+		bookList.add(b1);
+		bookList.add(b2);
+		bookList.add(b3);
+	}
+	
+/***************  Add New Book in ArrayList ***************/
+	public void addNewBookDetails(BookSchema book)
+	{
+		bookList.add(book);
+	}
+	public static ArrayList<BookSchema> getBookList()
+	{
+		return bookList;
+	}
+	public static void setBookList(ArrayList<BookSchema>bookList)
+	{
+	BookCollectionHelper.bookList = bookList;
+	}
+	
+/************** Fetch All Book Deatils ******************/
+	public static void displayBookCount()
+	{
+		System.out.println(bookList.size());
+		Iterator<BookSchema> bookIt=bookList.iterator();
+		//BookSchema tempBook=null;
+		int totalCount=0;
+		while(bookIt.hasNext())
+		{
+			totalCount++;
+			//tempBook=bookIt.next();
+			System.out.println(bookIt.next());
+		}
+		System.out.println("Total Count of Books "+totalCount);
+}
+}

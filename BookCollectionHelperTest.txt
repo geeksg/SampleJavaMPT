@@ -1,0 +1,39 @@
+package com.cg.junitdemo;
+
+import junit.framework.Assert;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.cg.bean.BookSchema;
+import com.cg.exception.BookException;
+import com.cg.helper.BookCollectionHelper;
+
+
+@SuppressWarnings("deprecation")
+public class BookCollectionHelperTest{
+	static BookCollectionHelper collectionHelper;
+	static BookSchema book=null;
+
+	@BeforeClass
+	public static void beforeClass()
+	{
+		collectionHelper=new BookCollectionHelper();
+		book = new BookSchema(548,"Java Black Book",670.00);
+	}
+	@AfterClass
+	public static void afterClass()
+	{
+		collectionHelper=null;
+		book=null;
+	}
+	
+@Test	
+public void testAddNewBook() throws BookException
+{
+	collectionHelper.addNewBookDetails(book);
+	Assert.assertEquals(4,collectionHelper.getBookList().size());
+	Assert.assertNotNull(collectionHelper.toString());
+}	
+}
